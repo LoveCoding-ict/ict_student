@@ -1,102 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-/* Basic link styles */
-a:link, a:visited {
-  background-color: #f44336;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  width: 500px;
-  border-radius: 10px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic link styles */
+    a:link, a:visited {
+      background-color: #f44336;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      width: 510px;
+      border-radius: 10px;
+      padding: 10px 20px;
+    }
 
-a:hover, a:active {
-  background-color: SlateBlue;
-  width: 500px;
-  border-radius: 10px;
-}
+    a:hover, a:active {
+      background-color: SlateBlue;
+      width: 510px;
+      border-radius: 10px;
+    }
 
-/* Container for the page */
-.bg {
-  margin: auto;
-  width: 60%;
-  height: 650px;
-  background-color: MediumSeaGreen;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 25px;
-  position: relative;
-}
+    /* Container for the page */
+    .bg {
+      margin: auto;
+      width: 60%;
+      height: 500px;
+      background-color: MediumSeaGreen;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 25px;
+      position: relative;
+    }
 
-.dropbtn {
-  background-color: #f44336;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  width: 550px;
-  border-radius: 10px;
-  color: white;
-  font-size: 25px;
-  border: none;
-}
+    /* Dropdown button */
+    .dropbtn {
+      background-color: #f44336;
+      padding: 15px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      width: 550px;
+      border-radius: 10px;
+      color: white;
+      font-size: 25px;
+      border: none;
+    }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-   border-radius: 10px;
-}
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      border-radius: 10px;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: gray;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 10px;
-  width: 530px;
-}
+    /* Dropdown content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: gray;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 10px;
+      width: 530px;
+    }
 
-.dropdown-content a {
-  color: black;
-  padding: 7px 10px;
-  text-decoration: none;
-  display: block;
-  border-radius: 10px;
-  width: 530px;
-}
+    /* Links inside dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 7px 10px;
+      text-decoration: none;
+      display: block;
+      border-radius: 10px;
+      width: 530px;
+      background-color: Magenta;
+    }
 
-.dropdown-content a:hover {
-  background-color: gray;
- border-radius: 10px;}
+    .dropdown-content a:hover {
+      background-color: gray;
+      border-radius: 10px;
+    }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-  border-radius: 10px;
-}
+    /* Show dropdown content on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-.dropdown:hover .dropbtn { 
-  background-color: SlateBlue;
-   border-radius: 10px;
-}
+    /* Change button background on hover */
+    .dropdown:hover .dropbtn {
+      background-color: SlateBlue;
+    }
 
-</style>
-</head> 
+    /* Submenu styles */
+    .submenu {
+      display: none;
+      position: absolute;
+      left: 100%; /* Position submenu to the right */
+      top: 0;
+      background-color: DeepSkyBlue;
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    }
+
+    /* Submenu link styles */
+    .submenu a {
+      padding: 10px;
+      color: black;
+      text-decoration: none;
+    }
+
+    .submenu a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show submenu on hover */
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+  </style>
+</head>
 <body>
-	<div class="bg">
-		<br><h2>ICT Lab (Student)</h2>
-     <div class="dropdown">
+
+  <div class="bg">
+    <br><h2>ICT Lab (Student)</h2>
+
+    <!-- First Dropdown Menu -->
+    <div class="dropdown">
       <button class="dropbtn">សៀវភៅសិក្សាICT</button>
       <div class="dropdown-content">
         <a href="https://sala.moeys.gov.kh/kh/library/00001483">ICTសម្រាប់ការបង្រៀននិងរៀន</a>
         <a href="#">សៀវភៅសិក្សាICTថ្នាក់ទី១២</a>
         <a href="#">សៀវភៅសិក្សាICTថ្នាក់ទី១១</a>
       </div>
-      <br><br>
-  </div>
+    </div>
+    <br><br>
+
+    <!-- Second Dropdown Menu -->
     <div class="dropdown">
       <button class="dropbtn">សៀវភៅអនុវត្ត</button>
       <div class="dropdown-content">
@@ -118,33 +159,43 @@ a:hover, a:active {
         <a href="#">មេរៀនទី១៦</a>
         <a href="#">មេរៀនទី១៧</a>
       </div>
+    </div>
+    <br><br>
+
+    <!-- Another link -->
+    <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
+    <br><br>
+
+    <!-- Dropdown with Submenu -->
+    <div class="dropdown">
+      <button class="dropbtn">ប្រឡង</button>
+      <div class="dropdown-content">
+        <div class="has-submenu">
+          <a href="#">ICT11</a>
+          <div class="submenu">
+            <a href="#">តេស្ថដើមឆ្នាំ</a>
+            <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
+          </div>
+        </div>
+
+        <div class="has-submenu">
+          <a href="#">ICT12</a>
+          <div class="submenu">
+           <a href="#">តេស្ថដើមឆ្នាំ</a>
+            <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
+          </div>
+        </div>
+
+         <div class="has-submenu">
+          <a href="#">CGC11</a>
+          <div class="submenu">
+           <a href="#">តេស្ថដើមឆ្នាំ</a>
+            <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-    <br><br>
-		<!-- Another link -->
-		<a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
-    <br><br>
-     <div class="dropdown">
-      <button class="dropbtn">ប្រឡងICTថ្នាក់ទី១២</button>
-      <div class="dropdown-content">
-        <a href="#">ប្រឡងតេស្ថដើមឆ្នាំ</a>
-        <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
-      </div>
-    </div>
-    <br><br>
-    <div class="dropdown">
-      <button class="dropbtn">ប្រឡងICTថ្នាក់ទី១១</button>
-      <div class="dropdown-content">
-        <a href="#">ប្រឡងតេស្ថដើមឆ្នាំ</a>
-        <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
-      </div>
-    </div>
-    <br><br>
-    <div class="dropdown">
-      <button class="dropbtn">ប្រឡងCGCថ្នាក់ទី១១</button>
-      <div class="dropdown-content">
-        <a href="#">ប្រឡងតេស្ថដើមឆ្នាំ</a>
-        <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
-      </div>
-    </div>
+
 </body>
 </html>
