@@ -1,36 +1,44 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Basic link styles */
-    a:link, a:visited {
-      background-color: #f44336;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      width: 510px;
-      border-radius: 10px;
-      padding: 10px 20px;
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+/* Basic link styles (same as dropbtn) */
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  max-width: 550px; /* Match the width of dropbtn */
+  border-radius: 10px;
+  padding: 15px 25px; /* Match padding */
+  margin: 10px 0;
+}
 
-    a:hover, a:active {
-      background-color: SlateBlue;
-      width: 510px;
-      border-radius: 10px;
-    }
+a:hover, a:active {
+  background-color: SlateBlue;
+}
 
     /* Container for the page */
     .bg {
       margin: auto;
-      width: 60%;
-      height: 570px;
+      width: 80%;
+      max-width: 600px;
       background-color: MediumSeaGreen;
       border-radius: 10px;
       text-align: center;
-      font-size: 25px;
+      font-size: 1.5rem;
       position: relative;
+      padding: 20px;
     }
 
     /* Dropdown button */
@@ -40,11 +48,13 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      width: 550px;
+      width: 100%;
+      max-width: 550px;
       border-radius: 10px;
       color: white;
-      font-size: 25px;
+      font-size: 1.5rem;
       border: none;
+      margin-bottom: 10px;
     }
 
     /* Dropdown container */
@@ -52,6 +62,8 @@
       position: relative;
       display: inline-block;
       border-radius: 10px;
+      width: 100%;
+      text-align: center; /* Center the dropdown */
     }
 
     /* Dropdown content */
@@ -62,7 +74,10 @@
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 10px;
-      width: 530px;
+      width: 100%;
+      max-width: 530px;
+      left: 50%;
+      transform: translateX(-50%); /* Center the dropdown */
     }
 
     /* Links inside dropdown */
@@ -72,13 +87,11 @@
       text-decoration: none;
       display: block;
       border-radius: 10px;
-      width: 530px;
       background-color: Magenta;
     }
 
     .dropdown-content a:hover {
       background-color: gray;
-      border-radius: 10px;
     }
 
     /* Show dropdown content on hover */
@@ -118,12 +131,68 @@
     .has-submenu:hover .submenu {
       display: block;
     }
+
+    /* Media queries for mobile responsiveness */
+    @media screen and (max-width: 768px) {
+      .bg {
+        width: 90%;  /* Adjust width on mobile */
+        font-size: 1.2rem;  /* Scale font size */
+        padding: 10px;
+      }
+
+      .dropbtn {
+        font-size: 1.2rem;
+        width: 100%;
+      }
+
+      .dropdown-content {
+        width: 100%;  /* Full width dropdown on mobile */
+      }
+
+      .submenu {
+        width: 100%;  /* Full width submenu */
+      }
+
+      a {
+        font-size: 1rem;
+      }
+
+      .dropdown-content a {
+        font-size: 1rem;
+        padding: 8px;
+      }
+
+      /* For small screens, stack elements vertically */
+      .bg {
+        font-size: 1.2rem;
+      }
+
+      .dropbtn {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Additional tweaks */
+    @media screen and (max-width: 480px) {
+      .bg {
+        font-size: 1rem; /* Smaller font size on very small screens */
+      }
+
+      .dropbtn {
+        font-size: 1rem;
+      }
+
+      .dropdown-content a {
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="bg">
-    <br><h2>ICT Lab (Student)</h2>
+    <h2>ICT Lab (Student)</h2>
 
     <!-- First Dropdown Menu -->
     <div class="dropdown">
@@ -160,9 +229,8 @@
       </div>
     </div>
     <br><br>
-
-    <!-- Another link -->
-    <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
+            <!-- Another link -->
+            <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
     <br><br>
 
     <!-- Dropdown with Submenu -->
@@ -189,7 +257,7 @@
           <a href="#">CGC11</a>
           <div class="submenu">
            <a href="#">តេស្ថដើមឆ្នាំ</a>
-            <a href="https://forms.gle/kV63Sd7TFuhgZws88">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
+            <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
           </div>
         </div>
 
