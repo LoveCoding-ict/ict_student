@@ -11,27 +11,29 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      width: 510px;
+      width: 90%;  /* Make it responsive */
+      max-width: 510px;  /* Max width for large screens */
       border-radius: 10px;
       padding: 10px 20px;
     }
 
     a:hover, a:active {
       background-color: SlateBlue;
-      width: 510px;
       border-radius: 10px;
     }
 
     /* Container for the page */
     .bg {
       margin: auto;
-      width: 60%;
-      height: 570px;
+      width: 90%; /* Make container responsive */
+      max-width: 800px;  /* Max width for large screens */
+      height: auto;  /* Let height adjust according to content */
       background-color: MediumSeaGreen;
       border-radius: 10px;
       text-align: center;
-      font-size: 25px;
+      font-size: 2vw; /* Use viewport width for font size */
       position: relative;
+      padding: 20px;
     }
 
     /* Dropdown button */
@@ -41,10 +43,11 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      width: 550px;
+      width: 90%;  /* Make button width responsive */
+      max-width: 550px;  /* Max width for large screens */
       border-radius: 10px;
       color: white;
-      font-size: 25px;
+      font-size: 2vw;
       border: none;
     }
 
@@ -63,7 +66,8 @@
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       border-radius: 10px;
-      width: 530px;
+      width: 100%;
+      max-width: 530px;  /* Max width for large screens */
     }
 
     /* Links inside dropdown */
@@ -73,7 +77,6 @@
       text-decoration: none;
       display: block;
       border-radius: 10px;
-      width: 530px;
       background-color: Magenta;
     }
 
@@ -118,6 +121,23 @@
     /* Show submenu on hover */
     .has-submenu:hover .submenu {
       display: block;
+    }
+
+    /* Media Queries for mobile devices */
+    @media screen and (max-width: 768px) {
+      .bg {
+        font-size: 4vw;  /* Adjust font size for mobile */
+      }
+
+      .dropbtn, .dropdown-content a {
+        font-size: 3.5vw; /* Make text smaller on mobile */
+        width: 100%;  /* Full width for buttons and links */
+        max-width: 100%;  /* Ensure no overflow */
+      }
+
+      .submenu {
+        width: 80%; /* Adjust submenu width on mobile */
+      }
     }
   </style>
 </head>
@@ -195,18 +215,10 @@
         </div>
 
       </div>
-
     </div>
     <br><br>
-     <div class="dropdown">
-          <button class="dropbtn">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
-           <div class="dropdown-content">
-              <a href="#">ICTថ្នាក់ទី១២</a>
-              <a href="#">ICTថ្នាក់ទី១១</a>
-              <a href="#">CGCថ្នាក់ទី១១</a>
-          </div>
-        </div>
-  </div>
 
-</body>
-</html>
+    <!-- Additional Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
+      <div class="dropdown-content">
