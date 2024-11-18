@@ -10,23 +10,24 @@
       padding: 0;
       box-sizing: border-box;
     }
-/* Basic link styles (same as dropbtn) */
-a:link, a:visited {
-  background-color: #f44336;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  width: 100%;
-  max-width: 550px; /* Match the width of dropbtn */
-  border-radius: 10px;
-  padding: 15px 25px; /* Match padding */
-  margin: 10px 0;
-}
 
-a:hover, a:active {
-  background-color: SlateBlue;
-}
+    /* Basic link styles (same as dropbtn) */
+    a:link, a:visited {
+      background-color: #f44336;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      max-width: 550px;
+      border-radius: 10px;
+      padding: 15px 25px;
+      margin-bottom: 5px;  /* Adjust the space between links */
+    }
+
+    a:hover, a:active {
+      background-color: SlateBlue;
+    }
 
     /* Container for the page */
     .bg {
@@ -54,7 +55,6 @@ a:hover, a:active {
       color: white;
       font-size: 1.5rem;
       border: none;
-/*      margin-bottom: 10px;*/
     }
 
     /* Dropdown container */
@@ -63,7 +63,8 @@ a:hover, a:active {
       display: inline-block;
       border-radius: 10px;
       width: 100%;
-      text-align: center; /* Center the dropdown */
+      text-align: center;
+      margin-bottom: 5px; /* Reduce space between dropdowns */
     }
 
     /* Dropdown content */
@@ -77,7 +78,7 @@ a:hover, a:active {
       width: 100%;
       max-width: 530px;
       left: 50%;
-      transform: translateX(-50%); /* Center the dropdown */
+      transform: translateX(-50%);
     }
 
     /* Links inside dropdown */
@@ -108,7 +109,7 @@ a:hover, a:active {
     .submenu {
       display: none;
       position: absolute;
-      left: 100%; /* Position submenu to the right */
+      left: 100%;
       top: 0;
       background-color: DeepSkyBlue;
       width: 200px;
@@ -135,8 +136,8 @@ a:hover, a:active {
     /* Media queries for mobile responsiveness */
     @media screen and (max-width: 768px) {
       .bg {
-        width: 90%;  /* Adjust width on mobile */
-        font-size: 1.2rem;  /* Scale font size */
+        width: 90%;
+        font-size: 1.2rem;
         padding: 10px;
       }
 
@@ -146,11 +147,11 @@ a:hover, a:active {
       }
 
       .dropdown-content {
-        width: 100%;  /* Full width dropdown on mobile */
+        width: 100%;
       }
 
       .submenu {
-        width: 100%;  /* Full width submenu */
+        width: 100%;
       }
 
       a {
@@ -161,21 +162,12 @@ a:hover, a:active {
         font-size: 1rem;
         padding: 8px;
       }
-
-      /* For small screens, stack elements vertically */
-      .bg {
-        font-size: 1.2rem;
-      }
-
-      .dropbtn {
-        font-size: 1.2rem;
-      }
     }
 
     /* Additional tweaks */
     @media screen and (max-width: 480px) {
       .bg {
-        font-size: 1rem; /* Smaller font size on very small screens */
+        font-size: 1rem;
       }
 
       .dropbtn {
@@ -184,7 +176,6 @@ a:hover, a:active {
 
       .dropdown-content a {
         font-size: 1rem;
-/*        padding: 10px;*/
       }
     }
   </style>
@@ -203,7 +194,6 @@ a:hover, a:active {
         <a href="#">សៀវភៅសិក្សាICTថ្នាក់ទី១១</a>
       </div>
     </div>
-    <br><br>
 
     <!-- Second Dropdown Menu -->
     <div class="dropdown">
@@ -228,10 +218,9 @@ a:hover, a:active {
         <a href="#">មេរៀនទី១៧</a>
       </div>
     </div>
-    <br><br>
-            <!-- Another link -->
-            <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
-    <br><br>
+
+    <!-- Another link -->
+    <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
 
     <!-- Dropdown with Submenu -->
     <div class="dropdown">
@@ -244,35 +233,32 @@ a:hover, a:active {
             <a href="https://forms.gle/gkp7QzcjFcg7N4596">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
           </div>
         </div>
-
         <div class="has-submenu">
           <a href="#">ICT12</a>
           <div class="submenu">
-           <a href="#">តេស្ថដើមឆ្នាំ</a>
+            <a href="#">តេស្ថដើមឆ្នាំ</a>
             <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
           </div>
         </div>
-
-         <div class="has-submenu">
+        <div class="has-submenu">
           <a href="#">CGC11</a>
           <div class="submenu">
-           <a href="#">តេស្ថដើមឆ្នាំ</a>
+            <a href="#">តេស្ថដើមឆ្នាំ</a>
             <a href="#">ប្រឡងប្រចាំខែវិច្ឆិកា</a>
           </div>
         </div>
-
       </div>
-
     </div>
-    <br><br>
-     <div class="dropdown">
-          <button class="dropbtn">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
-           <div class="dropdown-content">
-              <a href="#">ICTថ្នាក់ទី១២</a>
-              <a href="#">ICTថ្នាក់ទី១១</a>
-              <a href="#">CGCថ្នាក់ទី១១</a>
-          </div>
-        </div>
+
+    <!-- Another Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
+      <div class="dropdown-content">
+        <a href="#">ICTថ្នាក់ទី១២</a>
+        <a href="#">ICTថ្នាក់ទី១១</a>
+        <a href="#">CGCថ្នាក់ទី១១</a>
+      </div>
+    </div>
   </div>
 
 </body>
