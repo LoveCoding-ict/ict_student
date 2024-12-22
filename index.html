@@ -1,296 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Styles for the accordion */
+.accordion {
+  background-color: #7FFFD4;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  transition: 0.4s;
+  border-radius: 10px;
+  margin: 5px;
+}
 
-    /* Basic link styles (same as dropbtn) */
-    a:link, a:visited {
-      background-color: #f44336;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      max-width: 550px;
-      border-radius: 10px;
-      padding: 15px 25px;
-      margin-bottom: 5px;  /* Adjust the space between links */
-    }
+.active, .accordion:hover {
+  background-color: #FAEBD7;
+}
 
-    a:hover, a:active {
-      background-color: SlateBlue;
-    }
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
 
-    /* Container for the page */
-    .bg {
-      margin: auto;
-      width: 80%;
-      max-width: 600px;
-      background-color: MediumSeaGreen;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 1.5rem;
-      position: relative;
-      padding: 20px;
-    }
+.active:after {
+  content: "\2212";
+}
 
-    /* Dropdown button */
-    .dropbtn {
-      background-color: #f44336;
-      padding: 15px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      max-width: 550px;
-      border-radius: 10px;
-      color: white;
-      font-size: 1.5rem;
-      border: none;
-    }
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 
-    /* Dropdown container */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      border-radius: 10px;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 5px; /* Reduce space between dropdowns */
-    }
+/* Enhanced Styles for the login form */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #7FFFD4, #FAEBD7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Allow the body to grow as needed */
+  margin: 0;
 
-    /* Dropdown content */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: gray;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 530px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+}
 
-    /* Links inside dropdown */
-    .dropdown-content a {
-      color: black;
-      padding: 7px 10px;
-      text-decoration: none;
-      display: block;
-      border-radius: 10px;
-      background-color: Magenta;
-    }
+#login {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+}
 
-    .dropdown-content a:hover {
-      background-color: gray;
-    }
+#login h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
 
-    /* Show dropdown content on hover */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+#login input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
 
-    /* Change button background on hover */
-    .dropdown:hover .dropbtn {
-      background-color: SlateBlue;
-    }
+#login button {
+  width: 100%;
+  padding: 14px;
+  background-color: #7FFFD4;
+  color: #333;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    /* Submenu styles */
-    .submenu {
-      display: none;
-      position: absolute;
-      left: 100%;
-      top: 0;
-      background-color: DeepSkyBlue;
-      width: 200px;
-      border-radius: 10px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    }
+#login button:hover {
+  background-color: #5FD2B1;
+}
 
-    /* Submenu link styles */
-    .submenu a {
-      padding: 10px;
-      color: black;
-      text-decoration: none;
-    }
+/* Logout button style */
+#logout {
+  text-align: center;
+  margin: 20px;
+}
 
-    .submenu a:hover {
-      background-color: #ddd;
-    }
+#logout button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #FA8072;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
 
-    /* Show submenu on hover */
-    .has-submenu:hover .submenu {
-      display: block;
-    }
-
-    /* Media queries for mobile responsiveness */
-    @media screen and (max-width: 768px) {
-      .bg {
-        width: 90%;
-        font-size: 1.2rem;
-        padding: 10px;
-      }
-
-      .dropbtn {
-        font-size: 1.2rem;
-        width: 100%;
-      }
-
-      .dropdown-content {
-        width: 100%;
-      }
-
-      .submenu {
-        width: 100%;
-      }
-
-      a {
-        font-size: 1rem;
-      }
-
-      .dropdown-content a {
-        font-size: 1rem;
-        padding: 8px;
-      }
-    }
-
-    /* Additional tweaks */
-    @media screen and (max-width: 480px) {
-      .bg {
-        font-size: 1rem;
-      }
-
-      .dropbtn {
-        font-size: 1rem;
-      }
-
-      .dropdown-content a {
-        font-size: 1rem;
-      }
-    }
-  </style>
+#logout button:hover {
+  background-color: #E9967A;
+}
+</style>
 </head>
 <body>
 
-  <div class="bg">
-    <h2>ICT Lab (Student)</h2>
-    <br>
-    <!-- First Dropdown Menu -->
-    <div class="dropdown">
-      <button class="dropbtn">សៀវភៅសិក្សាICT</button>
-      <div class="dropdown-content">
-        <a href="https://sala.moeys.gov.kh/kh/library/00001483">ICTសម្រាប់ការបង្រៀននិងរៀន</a>
-        <a href="https://drive.google.com/file/d/198-eq22fI9e3wBaDZ7k2apkhxIMBe2gH/view?usp=sharing">សៀវភៅសិក្សាICTថ្នាក់ទី១២</a>
-        <a href="https://drive.google.com/file/d/1fc8Y0YHGcfpMP5emZGpy8mqkOAfjoK0E/view?usp=sharing">សៀវភៅសិក្សាICTថ្នាក់ទី១១</a>
-      </div>
-    </div>
+<!-- Login Form -->
+<div id="login">
+  <h2>ICT Lab (Student)</h2>
+  <input type="text" id="username" placeholder="Username"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+  <button onclick="authenticate()">Login</button>
+</div>
 
-    <!-- Second Dropdown Menu -->
-    <div class="dropdown">
-      <button class="dropbtn">សៀវភៅអនុវត្ត(Open Office Writer)</button>
-      <div class="dropdown-content">
-        <a href="https://drive.google.com/file/d/107AxneNZwX5nnRjJsksRxWbEA5N0vb0x/view?usp=sharing">មេរៀនទី១</a>
-        <a href="https://drive.google.com/file/d/1_2fICqrnDuzr2HKJthdd9kR-yDYlwXdd/view?usp=sharing">មេរៀនទី២</a>
-        <a href="https://drive.google.com/file/d/1XWNoMvrVVbtULRrevo_Y8sj8rmdCdgq9/view?usp=sharing">មេរៀនទី៣</a>
-        <a href="https://drive.google.com/file/d/1ct6K7r0d6ZRZM55tfFG6CG_1Dtp26BoO/view?usp=sharing">មេរៀនទី៤</a>
-        <a href="https://drive.google.com/file/d/1UgnmJNloInqA3SdpGZH0eTSLopYoR72m/view?usp=sharing">មេរៀនទី៥</a>
-        <a href="https://drive.google.com/file/d/1i8AV5kVTTAZH1NaDMr54T5neFhE3Ehlh/view?usp=sharing">មេរៀនទី៦</a>
-        <a href="https://drive.google.com/file/d/1dHhgQmRhQ_xwmMC_PNAr61FACH_aU-AF/view?usp=sharing">មេរៀនទី៧</a>
-        <a href="https://drive.google.com/file/d/1UYoyXiPESNPTlAAZqvMryhJKbIYUDyND/view?usp=sharing">មេរៀនទី៨</a>
-        <a href="https://drive.google.com/file/d/15dfXXdOmn1b6Piodlzg6TqBBI58rjuoO/view?usp=sharing">មេរៀនទី៩</a>
-        <a href="https://drive.google.com/file/d/1McfzH5P-hlNBB22P8RnDukd3AmZ3wH1B/view?usp=sharing">មេរៀនទី១០</a>
-        <a href="https://drive.google.com/file/d/1r8NJV7BGhnzIfzHihhsFBU-CD_ybMpbh/view?usp=sharing">មេរៀនទី១១</a>
-        <a href="https://drive.google.com/file/d/1KTXTjG51NbjVzuCT1h1KbKm3egNbG_Hp/view?usp=sharing">មេរៀនទី១២</a>
-      </div>
-    </div>
-     <div class="dropdown">
-      <button class="dropbtn">សៀវភៅអនុវត្ត(Open Office Calc)</button>
-      <div class="dropdown-content">
-        <a href="https://drive.google.com/file/d/1zf-IiQnIRWkyMe8Deq9nEJmdRMyU7e42/view?usp=sharing">មេរៀនទី១</a>
-        <a href="https://drive.google.com/file/d/1BXbfGWbyJPNDUpI3W4cAl_m6ItkXdaWr/view?usp=sharing">មេរៀនទី២</a>
-        <a href="https://drive.google.com/file/d/1pZY89IlMx64DvlwG-mIsx2sOnkdBrEdb/view?usp=sharing">មេរៀនទី៣</a>
-        <a href="https://drive.google.com/file/d/1A_4Z4vbFCog5jJmBeRUFOrsB8hTxOPg3/view?usp=sharing">មេរៀនទី៤</a>
-        <a href="https://drive.google.com/file/d/1gxgXf3fN9y58r87n1TxwoB3qRZSIyHha/view?usp=sharing">មេរៀនទី៥</a>
-        <a href="https://drive.google.com/file/d/19vUM_SFGMAQBrK1MQu6bQQwOtOQvhZVf/view?usp=sharing">មេរៀនទី៦</a>
-        <a href="https://drive.google.com/file/d/1hPluVkHV_Rk6WSQJaHoydGscqwiNoDMZ/view?usp=sharing">មេរៀនទី៧</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn">ឯកសារជំនួយ(CGC)</button>
-      <div class="dropdown-content">
-        <a href="https://drive.google.com/file/d/1eMuM4OJwcyHbmcfdobETr07q99xhgzEQ/view?usp=sharing">មេរៀនទី៤</a>
-        <a href="https://drive.google.com/file/d/1Z6kKc_mloQ6X3cP0iUbJLlLaqvwQZRX2/view?usp=sharing">មេរៀនទី៥</a>
-        <a href="https://drive.google.com/file/d/1Ug8jpioNWfgZ7JV9dKDLGDN3FwZ6-hp4/view?usp=sharing">មេរៀនទី៦</a>
-        <a href="#">មេរៀនទី៧</a>
-        <a href="#">មេរៀនទី៨</a>
-        <a href="#">មេរៀនទី៩</a>
-        <a href="#">មេរៀនទី១០</a>
-      </div>
-    </div>
+<!-- Hidden Content -->
+<div id="content" style="display: none;">
+  <h2 align="center">Welcome to ICT Lab (Student)</h2>
 
-    <!-- Another link -->
-    <a href="https://kahoot.it/">ហ្គេមឆ្លើយសំណួរចុងម៉ោង</a>
-
-    <!-- Dropdown with Submenu -->
-    <div class="dropdown">
-      <button class="dropbtn">ប្រឡង</button>
-      <div class="dropdown-content">
-        <div class="has-submenu">
-          <a href="#">ICT11</a>
-          <div class="submenu">
-            <a href="https://forms.gle/zNph7yZnjdAxXo9d7">ប្រឡងប្រចាំខែធ្នូICT11</a>
-            <a href="https://docs.google.com/spreadsheets/d/1qwLJMThAKnY8MBWDsXZ4v4z30h_J9vzbMSvcBKadIfI/edit?usp=sharing">ពិន្ទុ11</a>
-          </div>
-        </div>
-        <div class="has-submenu">
-          <a href="#">ICT12</a>
-          <div class="submenu">
-            <a href="https://forms.gle/XvQStsAdFW1rqfNU8">ប្រឡងប្រចាំខែធ្នូICT12</a>
-            <a href="https://docs.google.com/spreadsheets/d/1-eR_jNFDFzFdk7cS3-YXPsnppIMdSXGkGxTchI_k5Cs/edit?usp=sharing">ពិន្ទុ12</a>
-          </div>
-        </div>
-        <div class="has-submenu">
-          <a href="#">CGC11</a>
-          <div class="submenu">
-            <a href="https://forms.gle/U23fS8vEbtk8XAzW9">តេស្ថដើមឆ្នាំCCG11</a>
-            <!-- <a href="https://forms.gle/YQRr5GHJBhuJfR1c8">ប្រឡងប្រចាំខែវិច្ឆិកា</a> -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Another Dropdown -->
-    <div class="dropdown">
-      <button class="dropbtn">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
-      <div class="dropdown-content">
-         <div class="has-submenu">
-        <a href="#">ICTថ្នាក់ទី១២</a>
-         <div class="submenu">
-            <a href="https://docs.google.com/document/d/1ftpXyYPXS1xZgN4E7fLtISfZBiVSFMSoH5TOMnh32-E/edit?usp=sharing">ទ្រឹស្តីICTទី១២</a>
-             <a href="https://docs.google.com/document/d/1N32ONnI9RDncA0rmsTxGPFM6SMM45sxkSTWjJi1qhnw/edit?usp=sharing">អនុវត្តICTទី១២</a>
-         </div>
-         </div>
-         <div class="has-submenu">
-        <a href="#">ICTថ្នាក់ទី១១</a>
-         <div class="submenu">
-            <a href="#">ទ្រឹស្តីICTទី១១</a>
-             <a href="#">អនុវត្តICTទី១១</a>
-         </div>
-         </div>
-        <a href="#">CGCថ្នាក់ទី១១</a>
-      </div>
-    </div>
+  <button class="accordion">សៀវភៅសិក្សាគោលICT</button>
+  <div class="panel">
+    <a href="https://sala.moeys.gov.kh/kh/library/00001483"><button class="accordion sub-accordion">សៀវភៅICTសម្រាប់ការបង្រៀននិងរៀន</button></a>
+    <a href="https://drive.google.com/file/d/198-eq22fI9e3wBaDZ7k2apkhxIMBe2gH/view?usp=sharing"><button class="accordion sub-accordion">សៀវភៅសិក្សាគោលICTថ្នាក់ទី១២</button></a>
+    <a href="https://drive.google.com/file/d/1fc8Y0YHGcfpMP5emZGpy8mqkOAfjoK0E/view?usp=sharing"><button class="accordion sub-accordion">សៀវភៅសិក្សាគោលICTថ្នាក់ទី១១</button></a>
+    <a href="https://drive.google.com/file/d/1ZHZOWWfuDiDPYRiVODMCCaQDM2xpg91B/view?usp=sharing"><button class="accordion sub-accordion">សៀវភៅសិក្សាគោលICTថ្នាក់ទី១០</button></a>
   </div>
+
+  <button class="accordion">សៀវភៅស្លឹករឹត(OpenOffice Writer)</button>
+  <div class="panel">
+    <a href="https://drive.google.com/file/d/107AxneNZwX5nnRjJsksRxWbEA5N0vb0x/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១ សេចក្តីណែនាំអំពីស្លឹករឹត</button></a>
+    <a href="https://drive.google.com/file/d/1_2fICqrnDuzr2HKJthdd9kR-yDYlwXdd/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី២ របៀបវាយយូនីកូដខ្មែរ</button></a>
+    <a href="https://drive.google.com/file/d/1XWNoMvrVVbtULRrevo_Y8sj8rmdCdgq9/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី៣ ការងារជាមួយអត្ថបទនិងកថាខណ្ឌ</button></a>
+    <a href="https://drive.google.com/file/d/1ct6K7r0d6ZRZM55tfFG6CG_1Dtp26BoO/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី៤ ការងារជាមួយក្រាហ្វិក</button></a>
+        <a href="https://drive.google.com/file/d/1UgnmJNloInqA3SdpGZH0eTSLopYoR72m/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី៥ ការងារជាមួយទំព័រ</button></a>
+        <a href="https://drive.google.com/file/d/1i8AV5kVTTAZH1NaDMr54T5neFhE3Ehlh/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី៦ ការងារជាមួយតារាង</button></a>
+        <a href="https://drive.google.com/file/d/1dHhgQmRhQ_xwmMC_PNAr61FACH_aU-AF/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី៧ ស្វែងយល់អំពីជម្រើសក្នុងកម្មវិធីស្លឹករឹត</button></a>
+        <a href="https://drive.google.com/file/d/1UYoyXiPESNPTlAAZqvMryhJKbIYUDyND/view?usp=sharing"><button class="accordion sub-accordion">ជំពុកទី៨ សេចក្តីណែនាំអំពី រចនាប័ទ្ម និងទ្រង់ទ្រាយ</button></a>
+        <a href="https://drive.google.com/file/d/15dfXXdOmn1b6Piodlzg6TqBBI58rjuoO/view?usp=sharing"><button class="accordion sub-accordion">ជំពុកទី៩ ការងារជាមួយពុម្ព</button></a>
+        <a href="https://drive.google.com/file/d/1McfzH5P-hlNBB22P8RnDukd3AmZ3wH1B/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១០ ការងារជាមួយភាគ</button></a>
+        <a href="https://drive.google.com/file/d/1r8NJV7BGhnzIfzHihhsFBU-CD_ybMpbh/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១១ តារាងមាតិកា លិបិក្រម និងគន្ថនិទ្ទេស</button></a>
+        <a href="https://drive.google.com/file/d/1KTXTjG51NbjVzuCT1h1KbKm3egNbG_Hp/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១២ ការប្រើប្រាស់សំបុត្រសំណុំបែបបទ</button></a>
+  </div>
+  <button class="accordion">សៀវភៅបញ្ជី(OpenOffice Calc)</button>
+  <div class="panel">
+      <a href="https://drive.google.com/file/d/1zf-IiQnIRWkyMe8Deq9nEJmdRMyU7e42/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១៤ មុលដ្ឋានគ្រឹះនៃកម្មវិធីនព្វន្ត</button></a>
+     <a href="https://drive.google.com/file/d/1BXbfGWbyJPNDUpI3W4cAl_m6ItkXdaWr/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១៥ ប្រតិបត្តិលើសន្លឹកការងារ</button></a>
+      <a href="https://drive.google.com/file/d/1pZY89IlMx64DvlwG-mIsx2sOnkdBrEdb/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១៦ ទ្រង់ទ្រាយក្រឡា តួអក្សរ និងសន្លឹកការងារ</button></a>
+       <a href="https://drive.google.com/file/d/1A_4Z4vbFCog5jJmBeRUFOrsB8hTxOPg3/view"><button class="accordion sub-accordion">ជំពូកទី១៧ ការគណនា និងរូបមន្ត</button></a>
+       <a href="https://drive.google.com/file/d/1gxgXf3fN9y58r87n1TxwoB3qRZSIyHha/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១៨ គំនូសតាងនិងបញ្ចូលក្រាហ្វិក</button></a>
+       <a href="https://drive.google.com/file/d/19vUM_SFGMAQBrK1MQu6bQQwOtOQvhZVf/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី១៩ ការវិភាគមូលដ្ឋានគ្រឹះទិន្នន័យ</button></a>
+       <a href="https://drive.google.com/file/d/1hPluVkHV_Rk6WSQJaHoydGscqwiNoDMZ/view?usp=sharing"><button class="accordion sub-accordion">ជំពូកទី២០ ការបោះពុម្ពឯកសារ</button></a>
+  </div>
+  <button class="accordion">ឯកសារជំនួយ(CGC)</button>
+  <div class="panel">
+       <a href="https://drive.google.com/file/d/1eMuM4OJwcyHbmcfdobETr07q99xhgzEQ/view?usp=sharing"><button class="accordion sub-accordion">មេរៀនទី៤ ការពន្យល់បកស្រាយ</button></a>
+       <a href="https://drive.google.com/file/d/1Z6kKc_mloQ6X3cP0iUbJLlLaqvwQZRX2/view?usp=sharing"><button class="accordion sub-accordion">មេរៀនទី៥ ការរៀបចំធ្វើបទបង្ហាញ</button></a>
+       <a href="https://drive.google.com/file/d/1Ug8jpioNWfgZ7JV9dKDLGDN3FwZ6-hp4/view?usp=sharing"><button class="accordion sub-accordion">មេរៀនទី៦ ការធ្វើបទបង្ហាញទី១</button></a>
+       <a href=""><button class="accordion sub-accordion">មេរៀនទី៧</button></a>
+       <a href=""><button class="accordion sub-accordion">មេរៀនទី៨</button></a>
+       <a href=""><button class="accordion sub-accordion">មេរៀនទី៩</button></a>
+       <a href=""><button class="accordion sub-accordion">មេរៀនទី១០</button></a>  
+</div>
+<a href="https://kahoot.it/"><button class="accordion">ហ្គេមឆ្លើយសំនួរចុងម៉ោង</button></a>
+<button class="accordion">ប្រឡង</button>
+ <div class="panel">
+      <button class="accordion sub-accordion">ICT11</button>
+      <div class="panel">
+          <a href="https://forms.gle/zNph7yZnjdAxXo9d7"><button class="accordion sub-accordion">ប្រឡងប្រចាំខែធ្នូICT11</button></a>
+          <a href="https://docs.google.com/spreadsheets/d/1qwLJMThAKnY8MBWDsXZ4v4z30h_J9vzbMSvcBKadIfI/edit?usp=sharing"><button class="accordion sub-accordion">ពិន្ទុICT11</button></a>
+      </div>
+      <button class="accordion sub-accordion">ICT12</button>
+      <div class="panel">
+          <a href="https://forms.gle/XvQStsAdFW1rqfNU8">ប្រឡងប្រចាំខែធ្នូICT12</button></a>
+          <a href="https://docs.google.com/spreadsheets/d/1-eR_jNFDFzFdk7cS3-YXPsnppIMdSXGkGxTchI_k5Cs/edit?usp=sharing"><button class="accordion sub-accordion">ពិន្ទុICT12</button></a>
+      </div>
+      <button class="accordion sub-accordion">CGC11</button>
+      <div class="panel">
+          <a href="#">ប្រឡងតេស្តដើមឆ្នាំCGC11</button></a>
+          <a href="#"><button class="accordion sub-accordion">ពិន្ទុCCG11</button></a>
+      </div>
+  </div>
+  <button class="accordion">សន្លឹកកិច្ចការស្វ័យសិក្សា</button>
+ <div class="panel">
+      <button class="accordion sub-accordion">ICT12</button>
+      <div class="panel">
+          <a href="https://docs.google.com/document/d/1ftpXyYPXS1xZgN4E7fLtISfZBiVSFMSoH5TOMnh32-E/edit?usp=sharing"><button class="accordion sub-accordion">ទ្រឹស្តីICT12</button></a>
+             <a href="https://docs.google.com/document/d/1N32ONnI9RDncA0rmsTxGPFM6SMM45sxkSTWjJi1qhnw/edit?usp=sharing"><button class="accordion sub-accordion">អនុវត្តICT12</button></a>
+      </div>
+      <button class="accordion sub-accordion">ICT11</button>
+      <div class="panel">
+          <a href="#"><button class="accordion sub-accordion">ទ្រឹស្តីICT11</button></a>
+          <a href="#"><button class="accordion sub-accordion">អនុវត្តICT11</button></a>
+      </div>
+       <a href=""><button class="accordion sub-accordion">CGC11</button></a>
+     </div>
+  
+  
+  <!-- Logout button -->
+<div id="logout">
+  <button onclick="logout()">Logout</button>
+</div>
+</div>
+
+
+
+<script>
+// Predefined username and password
+const validUsername = "ict";
+const validPassword = "ict@123";
+
+// Authentication function
+function authenticate() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (username === validUsername && password === validPassword) {
+    // Hide login form and show content
+    document.getElementById("login").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+}
+
+// Logout function
+function logout() {
+  // Hide content and show login form
+  document.getElementById("content").style.display = "none";
+  document.getElementById("login").style.display = "block";
+
+  // Clear input fields
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+}
+
+// Accordion functionality
+var acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+
+    // Check if panel is already expanded
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+
+    // Prevent collapse when clicking on the active accordion button
+    for (let j = 0; j < acc.length; j++) {
+      if (acc[j] !== this) {
+        acc[j].classList.remove("active");
+        var otherPanel = acc[j].nextElementSibling;
+        otherPanel.style.maxHeight = null;
+      }
+    }
+  });
+}
+</script>
 
 </body>
 </html>
